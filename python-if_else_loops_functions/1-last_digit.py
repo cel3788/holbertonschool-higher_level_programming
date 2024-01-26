@@ -15,8 +15,3 @@ elif lastdigit == 0:
     print(f"Last digit of {number} is {lastdigit} {str2}")
 else:
     print(f"Last digit of {number} is {lastdigit} {str3}")
-
-File 2-print_alphabet
-#!/usr/bin/python3
-for i in range(ord('a'), ord('z') + 1):
-    print("{}".format(chr(i)), end="")
