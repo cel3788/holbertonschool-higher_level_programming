@@ -1,12 +1,19 @@
 #!/usr/bin/python3
-def add(a, b):
-    """My addition function
+
+def add(a: int, b: int) -> int:
+    """Adds two integers.
 
     Args:
-        a: first integer
-        b: second integer
+        a (int): The first integer to be added.
+        b (int): The second integer to be added.
 
     Returns:
-        The return value. a + b
+        int: The sum of the two integers.
+
+    Raises:
+        TypeError: If either a or b is not an integer.
     """
-    return (a + b)
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise TypeError("Both arguments must be integers")
+    return a + b
+
