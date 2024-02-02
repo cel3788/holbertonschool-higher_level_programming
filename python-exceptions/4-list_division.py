@@ -1,19 +1,29 @@
 #!/usr/bin/python3
+
 def list_division(my_list_1, my_list_2, list_length):
-    response = []
-    data = 0
-    for i in range(list_length):
+    """Divides two lists element by element.
+
+    Args:
+        my_list_1 (list): The first list.
+        my_list_2 (list): The second list.
+        list_length (int): The number of elements to divide.
+
+    Returns:
+        A new list of length list_length containing all the divisions.
+    """
+    new_list = []
+    for i in range(0, list_length):
         try:
-            data = my_list_1[i] / my_list_2[i]
-        except ZeroDivisionError:
-            data = 0
-            print("{:s}".format('division by 0'))
+            div = my_list_1[i] / my_list_2[i]
         except TypeError:
-            data = 0
-            print("{:s}".format('wrong type'))
+            print("wrong type")
+            div = 0
+        except ZeroDivisionError:
+            print("division by 0")
+            div = 0
         except IndexError:
-            data = 0
-            print("{:s}".format('out of range'))
+            print("out of range")
+            div = 0
         finally:
-            response.append(data)
-    return response
+            new_list.append(div)
+    return (new_list)
