@@ -5,12 +5,15 @@ Method module
 
 
 def inherits_from(obj, a_class):
-    """check if object is an instance of a class
-    args:
-        obj: object to check
-        a_class: class to check
-    returns:
-        True or False
+    """
+    Check if object is an instance of a class.
+    
+    Args:
+        obj: Object to check.
+        a_class: Class to check.
+    
+    Returns:
+        True or False.
     """
 
     if type(obj) == a_class:
