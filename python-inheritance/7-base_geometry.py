@@ -1,16 +1,37 @@
-#!/usr/bin/python3
-"""Defines a base geometry class BaseGeometry."""
+class Student:
+    """A class that defines a student by first name, last name, and age."""
 
+    def __init__(self, first_name, last_name, age):
+        """Initialize a new Student with first_name, last_name, and age.
 
-class BaseGeometry:
-    """Represent base geometry."""
+        Args:
+            first_name (str): The first name of the student.
+            last_name (str): The last name of the student.
+            age (int): The age of the student.
+        """
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
 
-    def area(self):
-        """Not implemented."""
-        raise Exception("area() is not implemented")
+    def to_json(self, attrs=None):
+        """Retrieve a dictionary representation of a Student instance.
+
+        If attrs is a list of strings, only attribute names contained in this
+        list are retrieved. Otherwise, all attributes are retrieved.
+
+        Args:
+            attrs (list): A list of strings representing the names of the
+            attributes to retrieve.
+
+        Returns:
+            dict: A dictionary representation of the Student instance.
+        """
+        if isinstance(attrs, list) and all(isinstance(attr, str) for attr in attrs):
+            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
+        return self.__dict__
 
     def integer_validator(self, name, value):
-        """Validate if value is an integer.
+        """Validate if the value is an integer.
 
         Args:
             name (str): The name of the value being validated.
@@ -18,9 +39,6 @@ class BaseGeometry:
 
         Raises:
             TypeError: If the value is not an integer.
-            ValueError: If the value is less than or equal to 0.
         """
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
-        if value <= 0:
-            raise ValueError(f"{name} must be greater than 0")
