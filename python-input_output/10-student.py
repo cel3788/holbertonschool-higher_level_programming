@@ -3,7 +3,7 @@ class Student:
 
     def __init__(self, first_name, last_name, age):
         """Initialize a new Student.
-
+        
         Args:
             first_name (str): The first name of the student.
             last_name (str): The last name of the student.
@@ -21,7 +21,7 @@ class Student:
 
         Args:
             attrs (list): List of attribute names to retrieve (default None).
-
+        
         Returns:
             dict: Dictionary representation of the Student instance.
         """
