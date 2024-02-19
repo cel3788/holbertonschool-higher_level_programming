@@ -21,3 +21,4 @@ dot.edges(['AB', 'BC', 'CD', 'CE', 'CF', 'CG', 'CH', 'CI', 'CJ', 'CK'])
 
 # Sauvegarde du graphe dans un fichier
 dot.render('flowchart_python_objects', format='png', cleanup=True)
+l
