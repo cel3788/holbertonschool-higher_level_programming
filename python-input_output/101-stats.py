@@ -1,37 +1,35 @@
 #!/usr/bin/python3
+'''Module for log parsing script.'''
 import sys
-
-def print_stats(total_size, status_codes):
-    print("File size: {}".format(total_size))
-    for code in sorted(status_codes.keys()):
-        if status_codes[code] > 0:
-            print("{}: {}".format(code, status_codes[code]))
-
-def main():
-    total_size = 0
-    status_codes = {
-        200: 0,
-        301: 0,
-        400: 0,
-        401: 0,
-        403: 0,
-        404: 0,
-        405: 0,
-        500: 0
-    }
+import datetime
+size = [0]
+codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+def check_match(line):
+    '''Checks for regexp match in line.'''
     try:
-        for i, line in enumerate(sys.stdin, 1):
-            data = line.split()
-            if len(data) > 2:
-                total_size += int(data[-1])
-                code = int(data[-2])
-                if code in status_codes:
-                    status_codes[code] += 1
-            if i % 10 == 0:
-                print_stats(total_size, status_codes)
-    except KeyboardInterrupt:
-        print_stats(total_size, status_codes)
-        raise
-
+        line = line[:-1]
+        words = line.split(" ")
+        size[0] += int(words[-1])
+        code = int(words[-2])
+        if code in codes:
+            codes[code] += 1
+    except:
+        pass
+def print_stats():
+    '''Prints accumulated statistics.'''
+    print("File size: {}".format(size[0]))
+    for k in sorted(codes.keys()):
+        if codes[k]:
+            print("{}: {}".format(k, codes[k]))
 if __name__ == "__main__":
-    main()
+    i = 1
+    try:
+        for line in sys.stdin:
+            check_match(line)
+            if i % 10 == 0:
+                print_stats()
+            i += 1
+    except KeyboardInterrupt:
+        print_stats()
+        raise
+    print_stats()

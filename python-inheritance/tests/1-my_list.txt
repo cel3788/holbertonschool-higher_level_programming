@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 The ``1-my_list`` module
+=======
+he ``1-my_list`` module
+>>>>>>> refs/remotes/origin/main
 ============================
 
 Using ``1-mylist``
