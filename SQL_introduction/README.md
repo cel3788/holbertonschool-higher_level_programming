@@ -1,6 +1,6 @@
-# 0x09. 0x0D-SQL_introduction
+SQL_introduction
 
-## Description
+ Description
 
 What you should learn from this project:
 
